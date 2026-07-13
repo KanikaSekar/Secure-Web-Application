@@ -34,3 +34,16 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/KanikaSekar/Secure-Web-Application.git
+## Screenshots
+
+### Registration Page
+![Registration Page](screenshots/register.png)
+
+### Login Page
+![Login Page](screenshots/login.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Account Lockout
+![Account Lockout](screenshots/account_lockout.png)
