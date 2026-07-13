@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Admin Dashboard</h1>
+
+<h2>Registered Users</h2>
+
+<table border="1" cellpadding="10">
+
+<tr>
+
+<th>ID</th>
+<th>Username</th>
+<th>Email</th>
+<th>Role</th>
+<th>Failed Attempts</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+{% for user in users %}
+
+<tr>
+
+<td>{{ user.id }}</td>
+
+<td>{{ user.username }}</td>
+
+<td>{{ user.email }}</td>
+
+<td>{{ user.role }}</td>
+
+<td>{{ user.failed_attempts }}</td>
+
+<td>
+
+{% if user.locked_until %}
+
+Locked
+
+{% else %}
+
+Active
+
+{% endif %}
+
+</td>
+
+<td>
+
+{% if user.locked_until %}
+
+<a href="{{ url_for('unlock', user_id=user.id) }}">
+<button>Unlock</button>
+</a>
+
+{% else %}
+
+-
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br><br>
+
+<h2>Audit Logs</h2>
+
+<table border="1" cellpadding="10">
+
+<tr>
+
+<th>Username</th>
+<th>Action</th>
+<th>Status</th>
+<th>Timestamp</th>
+
+</tr>
+
+{% for log in logs %}
+
+<tr>
+
+<td>{{ log.username }}</td>
+
+<td>{{ log.action }}</td>
+
+<td>{{ log.status }}</td>
+
+<td>{{ log.timestamp }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>
